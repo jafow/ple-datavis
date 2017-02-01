@@ -1,0 +1,16 @@
+.container {
+    margin: 0 auto;
+}
+.axis-y {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.axis-y > div {
+    height: 70px;
+    width: 70px;
+    border: 1px solid red;
+    font-size: 8px;
+}
+
