@@ -7,6 +7,7 @@ var height = Number(+svg.attr('height')) - margin.top - margin.bottom
 var g = svg.append("g")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+var parseTime = d3.timeParse('%Y-%m-%d')
 var x = d3.scaleTime().rangeRound([0, width])
 var y = d3.scaleLinear().rangeRound([height, 0])
 
@@ -15,33 +16,39 @@ var l = d3.line()
   .y(function (d) { return y(d.output) })
 
 
-d3.json('data.json', function (err, _data) {
-  if (err) throw err
+// d3.json('./cleanedup.json', function (d) {
+//   d.date = parseTime(d.date)
+//   if (d.output) {
+//     d.output.bm_count = Number(d.output.bm_count) || 0
+//   }
+//   return d
+// }, function (err, data) {
+//   if (err) throw err
 
-  x.domain(d3.extent(_data, (d) => d.date))
-  y.domain(d3.extent(_data, (d) => Number(d.output.bm_count)))
+//   x.domain(d3.extent(data, (d) => d.date))
+//   y.domain(d3.extent(data, (d) => d.output.bm_count))
 
-  g.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x))
-    .select(".domain")
-    .remove()
+//   g.append("g")
+//     .attr("transform", "translate(0," + height + ")")
+//     .call(d3.axisBottom(x))
+//     .select(".domain")
+//     .remove()
 
-  g.append("g")
-    .call(d3.axisLeft(y))
-    .append("text")
-    .attr("fill", "#000")
-    .attr("transform", "rotate(-90)")
-    .attr("y", 6)
-    .attr("dy", "0.71em")
-    .attr("text-anchor", "end")
+//   g.append("g")
+//     .call(d3.axisLeft(y))
+//     .append("text")
+//     .attr("fill", "#000")
+//     .attr("transform", "rotate(-90)")
+//     .attr("y", 6)
+//     .attr("dy", "0.71em")
+//     .attr("text-anchor", "end")
 
-  g.append("path")
-    .datum(_data)
-    .attr("fill", "none")
-    .attr("stroke", "steelblue")
-    .attr("stroke-linejoin", "round")
-    .attr("stroke-linecap", "round")
-    .attr("stroke-width", 1.5)
-    .attr("d", l)
-})
+//   g.append("path")
+//     .datum(data)
+//     .attr("fill", "none")
+//     .attr("stroke", "steelblue")
+//     .attr("stroke-linejoin", "round")
+//     .attr("stroke-linecap", "round")
+//     .attr("stroke-width", 1.5)
+//     .attr("d", l)
+// })
