@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
+    "build": "webpack -w",
     "dev": "webpack-dev-server",
     "lint": "eslint js/**/*.js webpack.config.js"
   },
@@ -17,6 +17,13 @@
     "d3-axis": "^1.0.4"
   },
   "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-register": "^6.23.0",
+    "eslint": "^3.16.0",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-loader": "^1.6.3",
+    "eslint-plugin-promise": "^3.4.2",
     "eslint-plugin-standard": "^2.0.1",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.1"
